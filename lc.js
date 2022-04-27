@@ -1,23 +1,12 @@
-var isValid = function(s) {
-    if (s === '') return false; 
-    if (s.length < 2) return false; 
-    const brackets = {
-        '(':')', 
-        '{':'}', 
-        '[':']'
-    }
-    let stack = []; 
-    for (let i = 0; i < s.length; i++) {
-        if (brackets[s[i]]) {
-            stack.push(s[i])
-        } else if (brackets[stack.pop()] != s[i]) {
-            return false; 
+var removeDuplicates = function(nums) {
+    let counter = 0; 
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] != nums[i-1]) {
+            nums[counter] = nums[i]; 
+            counter++; 
         }
     }
-    if (stack.length > 0) {
-        return false; 
-    }
-    return true; 
+    return counter; 
 };
 
-console.log(isValid("()[]{}"))
+console.log(removeDuplicates([1,1,2])); 
