@@ -1,12 +1,12 @@
-var removeDuplicates = function(nums) {
-    let counter = 0; 
+var removeElement = function(nums, val) {
+    let indexCounter = 0; 
     for (let i = 0; i < nums.length; i++) {
-        if (nums[i] != nums[i-1]) {
-            nums[counter] = nums[i]; 
-            counter++; 
+        if (nums[i] != val) {
+            nums[indexCounter] = nums[i]
+            indexCounter++; 
         }
-    }
-    return counter; 
+    }; 
+    return indexCounter;
 };
 
-console.log(removeDuplicates([1,1,2])); 
+console.log(removeElement([0,1,2,2,3,0,4,2], 2)); 
