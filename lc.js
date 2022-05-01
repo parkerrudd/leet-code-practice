@@ -1,13 +1,22 @@
-var searchInsert = function(nums, target) {
-  if (nums.includes(target)) {
-    return nums.indexOf(target); 
-  } else if (!nums.includes(target)) {
-    nums.push(target) 
-    nums.sort((a,b) => {
-      return a - b; 
-    }) 
-    return nums.indexOf(target); 
-  }
+var solution = function(isBadVersion) {
+  /**
+   * @param {integer} n Total versions
+   * @return {integer} The first bad version
+   */
+  return function(n) {
+      let start = 1; 
+      let end = n; 
+      while (start <= end) {
+        let mid = Math.floor((start + end )/ 2); 
+
+        if (isBadVersion(mid)) {
+          end = mid - 1; 
+        } else {
+          start = mid + 1; 
+        }
+      }
+      return start; 
+  };
 };
 
-console.log(searchInsert([1,3,5,6], 2)); 
+console.log(solution(isBadVersion)(5)); 
