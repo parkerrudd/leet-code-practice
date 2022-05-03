@@ -1,21 +1,25 @@
-var frequencySort = function(s) {
-  let count = {}; 
-  for (let i of s) {
-    if (count[i]) {
-      count[i]++; 
+var frequencySort = function(nums) {
+  let map = {}; 
+  for (let i of nums) {
+    if (map[i]) {
+      map[i]++; 
     } else {
-      count[i] = 1; 
+      map[i] = 1;
     }
   }
-  let finalStr = '';
-  let sorted = Object.keys(count).sort((a, b) => count[b] - count[a]); 
+  let res = []; 
+  let sorted = Object.keys(map).sort((a, b) => {
+    if (map[a] === map[b]) {
+      return b - a
+    }
+    return map[a] - map[b]; 
+  }); 
   for (let i of sorted) {
-    for (let j = 0; j < count[i]; j++) {
-      finalStr += i; 
+    for (let j = 0; j < map[i]; j++) {
+      res.push(i); 
     }
   }
-  return finalStr
-
+  return res;
 };
 
-console.log(frequencySort("Aabb")); 
+console.log(frequencySort([-1,1,-6,4,5,-6,1,4,1])); 
