@@ -1,22 +1,16 @@
-var solution = function(isBadVersion) {
-  /**
-   * @param {integer} n Total versions
-   * @return {integer} The first bad version
-   */
-  return function(n) {
-      let start = 1; 
-      let end = n; 
-      while (start <= end) {
-        let mid = Math.floor((start + end )/ 2); 
-
-        if (isBadVersion(mid)) {
-          end = mid - 1; 
-        } else {
-          start = mid + 1; 
-        }
-      }
-      return start; 
-  };
+var firstUniqChar = function(s) {
+  let characters = s.split(''); 
+  let charsArray = []; 
+  characters.forEach(char => {
+    if (s.indexOf(char) === s.lastIndexOf(char)) {
+      charsArray.push(s.indexOf(char))
+    }
+  }); 
+  if (charsArray.length === 0) {
+    return -1; 
+  } else {
+    return charsArray[0]; 
+  }
 };
 
-console.log(solution(isBadVersion)(5)); 
+console.log(firstUniqChar("leetcode")); 
