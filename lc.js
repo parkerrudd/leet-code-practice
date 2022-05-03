@@ -1,16 +1,21 @@
-var firstUniqChar = function(s) {
-  let characters = s.split(''); 
-  let charsArray = []; 
-  characters.forEach(char => {
-    if (s.indexOf(char) === s.lastIndexOf(char)) {
-      charsArray.push(s.indexOf(char))
+var frequencySort = function(s) {
+  let count = {}; 
+  for (let i of s) {
+    if (count[i]) {
+      count[i]++; 
+    } else {
+      count[i] = 1; 
     }
-  }); 
-  if (charsArray.length === 0) {
-    return -1; 
-  } else {
-    return charsArray[0]; 
   }
+  let finalStr = '';
+  let sorted = Object.keys(count).sort((a, b) => count[b] - count[a]); 
+  for (let i of sorted) {
+    for (let j = 0; j < count[i]; j++) {
+      finalStr += i; 
+    }
+  }
+  return finalStr
+
 };
 
-console.log(firstUniqChar("leetcode")); 
+console.log(frequencySort("Aabb")); 
