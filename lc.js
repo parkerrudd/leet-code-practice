@@ -1,25 +1,18 @@
-var frequencySort = function(nums) {
-  let map = {}; 
-  for (let i of nums) {
-    if (map[i]) {
-      map[i]++; 
+var mostFrequent = function(nums, key) {
+  let count = []; 
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i - 1] === key) count.push(nums[i]); 
+  }
+  let obj = {}; 
+  for (let i of count) {
+    if (obj[i]) {
+      obj[i]++
     } else {
-      map[i] = 1;
+      obj[i] = 1
     }
   }
-  let res = []; 
-  let sorted = Object.keys(map).sort((a, b) => {
-    if (map[a] === map[b]) {
-      return b - a
-    }
-    return map[a] - map[b]; 
-  }); 
-  for (let i of sorted) {
-    for (let j = 0; j < map[i]; j++) {
-      res.push(i); 
-    }
-  }
-  return res;
+  let sorted = Object.keys(obj).sort((a, b) => obj[b] - obj[a]); 
+  return sorted[0];
 };
 
-console.log(frequencySort([-1,1,-6,4,5,-6,1,4,1])); 
+console.log(mostFrequent([2,2,2,2,3], 2)); 
