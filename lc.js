@@ -8,7 +8,7 @@ var arrayRankTransform = function(arr) {
       finalSort.push(sorted[i])
     }
   }
-  //find the index of each value from arr in finalSort && add one to begin rank at 1
+  //map through original array to find out when they appear in finalSort array & add one to begin rank at 1
   return arr.map((x) => finalSort.indexOf(x) + 1);
 };
 
