@@ -1,37 +1,16 @@
-const findMidpoint = (head) => {
-   let slow = head
-   let fast = head 
-   while (fast && fast.next) {
-       slow = slow.next
-       fast = fast.next.next
+var isPrefixString = function(s, words) {
+   if (s === words[0]) return true
+   let i = 0
+   let prefix = words[0]
+   while (i < words.length){
+      if (s === prefix) {
+         return true
+      } else {
+         i++
+         prefix = prefix.concat(words[i])
+      }
    }
-   return slow
-}
+   return false
+};
 
-const reverse = (head) => {
-   let cur = head
-   let prev = null 
-   while (cur) {
-       let holdNext = cur.next
-       cur.next = prev
-       prev = cur 
-       cur = holdNext
-   }
-   return prev
-}
-
-const compare = (list1, list2) => {
-   while (list1 && list2) {
-       if (list1.val !== list2.val) return false
-       list1 = list1.next
-       list2 = list2.next
-   }
-   return true 
-}
-
-
-const isPalindrome = (head) => {
-   const midpoint = findMidpoint(head)
-   const tail = reverse(midpoint)
-   return compare(head, tail)
-}; 
+console.log(isPrefixString('z', ["z"]))
