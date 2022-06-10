@@ -1,16 +1,11 @@
-var isPrefixString = function(s, words) {
-   if (s === words[0]) return true
-   let i = 0
-   let prefix = words[0]
-   while (i < words.length){
-      if (s === prefix) {
-         return true
-      } else {
-         i++
-         prefix = prefix.concat(words[i])
-      }
+var isPrefixOfWord = function(sentence, searchWord) {
+   const sentenceArr = sentence.split(' '); 
+   for (let i in sentenceArr) {
+       if (sentenceArr[i].includes(searchWord) && sentenceArr[i].slice(0, searchWord.length) === searchWord) {
+           return sentenceArr.indexOf(sentenceArr[i]) + 1
+       } 
    }
-   return false
+   return -1
 };
 
-console.log(isPrefixString('z', ["z"]))
+console.log(isPrefixOfWord("i love eating burger", "burg"))
