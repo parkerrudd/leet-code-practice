@@ -1,29 +1,35 @@
-class Queue {
+class MinStack {
    constructor() {
-      this.storage = {}
-      this.head = 0
-      this.tail = 0
+       this.stack = []
    }
-
-   enqueue(element) {
-      this.storage[this.tail] = element
-      this.tail++
+   
+   push(element) {
+       this.stack.push(element)
    }
-
-   dequeue(){
-      let removed = this.storage[this.head]
-      delete this.storage[this.head]
-      this.head++
-      return removed
+   
+   pop() {
+       return this.stack.pop()
+   }
+   
+   top() {
+       return this.stack[this.stack.length - 1]
+   }
+   
+   getMin() {
+       let min = this.stack[0]
+       this.stack.forEach(element => {
+           if (element < min) {
+               min = element
+           }
+       })
+       return min
    }
 }
 
-const queue = new Queue 
+const minStack = new MinStack 
 
-queue.enqueue('seahorse')
-queue.enqueue('dolphin')
-queue.enqueue('whale shark')
+minStack.push(-2)
+minStack.push(0)
+minStack.push(-3)
 
-queue.dequeue()
-
-console.log(queue)
+console.log(minStack.top())
