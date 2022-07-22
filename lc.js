@@ -1,15 +1,24 @@
-const fizzBuzz = () => {
-   for (let i = 1; i < 101; i++) {
-      if (i % 3 === 0 && i % 5 === 0) {
-         console.log("FizzBuzz")
-      } else if (i % 3 === 0) {
-         console.log("Fizz")
-      } else if (i % 5 === 0) {
-         console.log('Buzz')
+var isAnagram = function(s, t) {
+   if (s.length !== t.length) return false
+   let first = s.split('').sort().join('')
+   let second = t.split('').sort().join('')
+   let freq1 = {}
+   let freq2 = {}
+   for (let i in first) {
+      if (freq1[first[i]]) {
+         freq1[first[i]]++
       } else {
-         console.log(i)
-      }   
+         freq1[first[i]] = 1
+      }
    }
-}
+   for (let i in second) {
+      if (freq2[second[i]]) {
+         freq2[second[i]]++
+      } else {
+         freq2[second[i]] = 1
+      }
+   }
+   return JSON.stringify(freq1) === JSON.stringify(freq2) 
+};
 
-console.log(fizzBuzz())
+console.log(isAnagram('car', 'rat'))
