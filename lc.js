@@ -1,9 +1,13 @@
-var reverseString = function(s) {
-   let queue = []
-   for (let i = 0; i < s.length; i++) {
-       queue.unshift(s[i])
-   }
-   return queue.join('')
-};
+const sumTwoDArray = (arr) => {
+   const flat = arr.flat()
+   let sum = 0
 
-console.log(reverseString('racecar'));
+   flat.forEach(element => {
+      sum += element
+   })
+
+   return sum
+
+}
+
+console.log(sumTwoDArray([1, 3, [1, 4, 3]]));
