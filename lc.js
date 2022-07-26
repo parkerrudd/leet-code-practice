@@ -1,12 +1,9 @@
-var isSymmetric = function(root) {
-   if (!root) return true 
-   return traverse(root.left, root.right)
+var reverseString = function(s) {
+   let queue = []
+   for (let i = 0; i < s.length; i++) {
+       queue.unshift(s[i])
+   }
+   return queue.join('')
 };
 
-const traverse = (node1, node2) => {
-      if (!node1 && !node2) return true 
-      if (!node1 || !node2) return false 
-      if (node1.val !== node2.val) return false 
-       
-      return traverse(node1.left, node2.right) && traverse(node1.right, node2.left)
-}  
+console.log(reverseString('racecar'));
