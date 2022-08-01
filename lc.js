@@ -1,17 +1,16 @@
-const maxSubArraySum = (nums, size) => {
-   if (size > nums.length || size < 0) return null
-   let currentSum = 0
-   let maxSum = -Infinity
-
-   for (let i = 0; i < nums.length; i++) {
-      currentSum += nums[i] 
-      if (i >= size - 1) {
-         maxSum = Math.max(currentSum, maxSum)
-         currentSum -= nums[i - (size - 1)]
+const divisorSubstrings = (num, k) => {
+    let currNum = []
+    let count = 0
+    let numsArr = num.toString().split('')
+    for (let i = 0; i < numsArr.length; i++) {
+        currNum.push(numsArr[i])
+        let current = currNum.join('')
+        if (i >= k - 1) {
+            if (num % current === 0) count++
+            currNum.shift()   
+         }
       }
-   }
-   return maxSum
-}
+   return count
+};
 
-
-console.log(maxSubArraySum([1, 2, 3, 5, 4, 8, 6, 2], 3));
+console.log(divisorSubstrings(430043, 2));
