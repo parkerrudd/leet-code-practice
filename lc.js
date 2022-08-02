@@ -1,23 +1,21 @@
-const mergeTwoLists = function(list1, list2) {
-   const dummy = new ListNode(-Infinity)
-   let prev = dummy
+var searchInsert = function(nums, target) {
+   let lower = 0
+   let upper = nums.length - 1
    
-   while (list1 && list2) {
-       if (list1.val <= list2.val) {
-           prev.next = list1
-           prev = list1
-           list1 = list1.next
-       } else {
-           prev.next = list2
-           prev = list2
-           list2 = list2.next
+   while (lower < upper) {
+       const middle = lower + Math.floor((upper - lower) / 2)
+       
+       if (nums[middle] === target) return middle
+       
+       if (nums[middle] < target) {
+           lower = middle + 1
+       }
+       
+       if (nums[middle] > target) {
+           upper = middle - 1
        }
    }
    
-   if (!list1) prev.next = list2
-   if (!list2) prev.next = list1
-
-   return dummy.next
+   return -1
+   
 };
-
-console.log(mergeTwoLists([1,2,4], [1,3,4]));
