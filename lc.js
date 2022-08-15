@@ -1,31 +1,28 @@
-class Queue {
+class Stack {
     constructor() {
         this.items = []
     }
 
-    enqueue(element) {
-        this.items.unshift(element)
+    push(element) {
+        this.items.push(element)
     }
 
-    dequeue() {
-        let removed = this.items.pop()
-        return removed
+    pop() {
+        return this.items.pop()
     }
 
-    isEmpty() {
-        return this.items.length === 0
-    }
-
-    front() {
-        if (this.items.length === 0) return null
+    peek() {
+        if (this.items.length === 0) return null 
         return this.items[this.items.length - 1]
     }
 }
 
-const queue = new Queue 
 
-queue.enqueue('dolphin')
-queue.enqueue('whale')
-queue.enqueue('orca')
+const stack = new Stack
 
-console.log(queue);
+stack.push('whale')
+stack.push('orca')
+stack.push('dolphin')
+
+
+console.log(stack.peek());
