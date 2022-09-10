@@ -1,28 +1,24 @@
-class Stack {
-    constructor() {
-        this.items = []
+function checkMagazine(magazine, note) {
+    let magazineArr = magazine.split(' ')
+    let noteArr = note.split(' ')
+    let magMap = {}
+    let noteMap = {}
+    for (let i = 0; i < magazineArr.length; i++) {
+        if (!magMap[magazineArr[i]]) magMap[magazineArr[i]] = 0
+        magMap[magazineArr[i]]++
     }
-
-    push(element) {
-        this.items.push(element)
+    for (let i = 0; i < noteArr.length; i++) {
+        if (!noteMap[noteArr[i]]) noteMap[noteArr[i]] = 0
+        noteMap[noteArr[i]]++
     }
-
-    pop() {
-        return this.items.pop()
-    }
-
-    peek() {
-        if (this.items.length === 0) return null 
-        return this.items[this.items.length - 1]
-    }
+    let searchedMag = Object.keys(magMap)
+    let searchedNote = Object.keys(noteMap)
+    for (let i = 0; i < searchedNote.length; i++) {
+        if (searchedMag.indexOf(searchedNote[i]) === -1) return 'No'
+        return 'Yes'
+    } 
 }
 
-
-const stack = new Stack
-
-stack.push('whale')
-stack.push('orca')
-stack.push('dolphin')
+console.log(checkMagazine('give me one grand today night', 'give one grand today'))
 
 
-console.log(stack.peek());
